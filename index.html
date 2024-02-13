@@ -8,35 +8,32 @@
 </head>
 <body class="bg-black h-screen">
     <!--div padre-->
-    <div class="flex flex-col justify-center">
+    <div class="flex flex-col justify-center" id="contenedor">
         <!--header-->
-        <div class="bg-white mx-auto my-10 min-w-80 flex flex-col items-center">
+        <div class="bg-white mx-auto my-10 min-w-80 flex flex-col items-center rounded-3xl" id="header">
             <p class="my-4">ToDo</p>
             <div class="flex items-center">
-                <input type="text" class="border">
-                <button class="ml-4 bg-[#DB1111] w-6 rounded-full text-white">X</button>
+                <input type="text" class="border p-4 rounded-3xl" id="textAreaHeader">
+                <button class="ml-4 bg-[#DB1111] w-8 rounded-full text-white p-1" id="btnDeleteHeader">X</button>
             </div>
-            <button class="bg-[#24B64B] text-white rounded-2xl h-10 my-4">Guardar</button>
+            <button class="bg-[#24B64B] text-white rounded-2xl h-10 my-4 p-2" id="btnGuardarHeader">Guardar</button>
         </div>
 
         <!--things-->
-        <div class="flex flex-col mx-auto my-10 min-w-80">
-            <!--card-->
-            <div class="bg-white flex my-1 min-w-80">
-                <p class="">w</p>
-                <button class="ml-auto">X</button>
-            </div>
-            <!--card-->
-            <div class="bg-white flex my-1 min-w-80">
-                <p class="">w</p>
-                <button class="ml-auto">X</button>
-            </div>
-            <!--card-->
-            <div class="bg-white flex my-1 min-w-80">
-                <p class="">w</p>
-                <button class="ml-auto">X</button>
-            </div>
+        <div class="flex flex-col mx-auto my-10 min-w-80" id="things">
+
+        </div>
+
+        <!--alerta-->
+        <div class="bg-orange-500 text-white mx-auto rounded-full p-8 fixed bottom-16 left-0 right-0 w-fit" id="alert">
+            <p>Ingresa una actividad</p>
         </div>
     </div>
+
+
+
+
+    <!-- JS -->
+    <script src="js/app.js"></script>
 </body>
 </html>
