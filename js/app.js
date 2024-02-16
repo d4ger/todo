@@ -2,6 +2,13 @@
 const textAreaHeader = document.getElementById("textAreaHeader");
 const btnDeleteHeader = document.getElementById("btnDeleteHeader");
 const btnGuardarHeader = document.getElementById("btnGuardarHeader");
+const alert = document.getElementById("alert");
+const thingContainer = document.getElementById("things")
+const card = document.getElementById("card");
+const header = document.getElementById("header");
+const contenedor = document.getElementById("contenedor");
+
+
 
 
 
@@ -12,25 +19,31 @@ btnDeleteHeader.addEventListener("click", () => {
 
 btnGuardarHeader.addEventListener("click", () => {
     checkInput(textAreaHeader);
-    deleteInput(textAreaHeader)
+    deleteInput(textAreaHeader);
 })
 
 textAreaHeader.addEventListener("click", () => {
     console.log('escribiendo')
 })
 
-
-
-console.log(textAreaHeader)
-console.log(btnDeleteHeader) 
+contenedor.addEventListener("click", (e) => {
+    if(header.contains(e.target)){
+        console.log('click dentro del header')
+    } else {
+        console.log('click fuera del header')
+        checkCard();
+    }
+})
 
 //funciones
 function checkInput(input){
     if(input.value.trim() !== '') {
-        console.log('guardando')
+        const thing = newThing(input.value);
+        thingContainer.appendChild(thing);
     } else {
+        alert.classList.remove('invisible');
         setTimeout(() => {
-            console.log("Delayed for 1 second.");
+            alert.classList.add('invisible');
           }, 3000);
     }
 }
@@ -41,15 +54,25 @@ function deleteInput(input){
     }
 }
 
-function createAlert(){
-    const alerta = document.createElement('div')
-    alerta.classList.add('bg-orange-500', 'text-white', 'mx-auto', 'rounded-full', 'p-8', 'fixed', 'bottom-16', 'left-0', 'right-0', 'w-fit')
-    alerta.innerHTML(`
-        <p>Ingresa una actividad</p>
-    `)
-    return alerta;
+
+function newThing(txt){
+    const div = document.createElement('div');
+    div.id = 'card'
+    div.classList.add('bg-white', 'flex', 'my-4', 'rounded-full', 'p-4')
+    div.innerHTML = `
+        <p class="p-4">${txt}</p>
+        <button class="ml-auto bg-[#DB1111] w-8 rounded-full h-8 my-auto text-white" id="deleteCard">X</button>
+    `
+    return div;
 }
 
+function checkCard(){
+    if(card){
+        console.log('card existe')
+    } else {
+        console.log('no existe')
+    }
+}
 
 /*
 <!--card-->
