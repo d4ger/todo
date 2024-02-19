@@ -3,10 +3,10 @@ const textAreaHeader = document.getElementById("textAreaHeader");
 const btnDeleteHeader = document.getElementById("btnDeleteHeader");
 const btnGuardarHeader = document.getElementById("btnGuardarHeader");
 const alert = document.getElementById("alert");
-const thingContainer = document.getElementById("things")
-const card = document.getElementById("card");
+const thingContainer = document.getElementById("things");
 const header = document.getElementById("header");
 const contenedor = document.getElementById("contenedor");
+let btnBorrarCard;
 
 
 
@@ -22,24 +22,21 @@ btnGuardarHeader.addEventListener("click", () => {
     deleteInput(textAreaHeader);
 })
 
-textAreaHeader.addEventListener("click", () => {
-    console.log('escribiendo')
-})
+// contenedor.addEventListener("click", (e) => {
+//     if(header.contains(e.target)){
+//         console.log('click dentro del header')
+//     } else {
+//         console.log('click fuera del header')
+//     }
+// })
 
-contenedor.addEventListener("click", (e) => {
-    if(header.contains(e.target)){
-        console.log('click dentro del header')
-    } else {
-        console.log('click fuera del header')
-        checkCard();
-    }
-})
 
 //funciones
 function checkInput(input){
     if(input.value.trim() !== '') {
         const thing = newThing(input.value);
         thingContainer.appendChild(thing);
+        checkCard(card);
     } else {
         alert.classList.remove('invisible');
         setTimeout(() => {
@@ -67,11 +64,30 @@ function newThing(txt){
 }
 
 function checkCard(){
+    const card = document.querySelector("#card")
     if(card){
-        console.log('card existe')
+        btnBorrarCard = document.querySelectorAll("#deleteCard")
+        console.log(btnBorrarCard);
+        detectCard(card);
+        //deleteCard();
     } else {
         console.log('no existe')
     }
+}
+
+function deleteCard(btnBorrarCard){
+    card.remove();
+    btnBorrarCard.parentElement.remove();
+}
+
+function detectCard(card){
+    card.addEventListener("click", (e) => {
+        if( btnBorrarCard.contains(e.target)){
+            console.log('borrando')
+        } else {
+    
+        }
+    })
 }
 
 /*
