@@ -66,9 +66,21 @@ function newThing(txt){
 function checkCard(){
     const card = document.querySelector("#card")
     if(card){
-        btnBorrarCard = document.querySelectorAll("#deleteCard")
-        console.log(btnBorrarCard);
-        detectCard(card);
+        console.log(card)
+        card.addEventListener("click", (e) => {
+            console.log(e.target)
+            if(e.target.id === 'deleteCard'){
+                console.log('boton borrando')
+            } else {
+                console.log('no')
+            }
+        })
+
+
+        
+        // btnBorrarCard = document.querySelectorAll("#deleteCard")
+        // console.log(btnBorrarCard);
+        // detectCard(card);
         //deleteCard();
     } else {
         console.log('no existe')
@@ -84,8 +96,6 @@ function detectCard(card){
     card.addEventListener("click", (e) => {
         if( btnBorrarCard.contains(e.target)){
             console.log('borrando')
-        } else {
-    
         }
     })
 }
