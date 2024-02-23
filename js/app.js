@@ -9,9 +9,6 @@ const contenedor = document.getElementById("contenedor");
 let btnBorrarCard;
 
 
-
-
-
 //event listeners
 btnDeleteHeader.addEventListener("click", () => {
     deleteInput(textAreaHeader);
@@ -21,15 +18,6 @@ btnGuardarHeader.addEventListener("click", () => {
     checkInput(textAreaHeader);
     deleteInput(textAreaHeader);
 })
-
-// contenedor.addEventListener("click", (e) => {
-//     if(header.contains(e.target)){
-//         console.log('click dentro del header')
-//     } else {
-//         console.log('click fuera del header')
-//     }
-// })
-
 
 //funciones
 function checkInput(input){
@@ -55,7 +43,7 @@ function deleteInput(input){
 function newThing(txt){
     const div = document.createElement('div');
     div.id = 'card'
-    div.classList.add('bg-white', 'flex', 'my-4', 'rounded-full', 'p-4')
+    div.classList.add('bg-white', 'flex', 'my-4', 'rounded-full', 'p-4', 'max-w-1/2')
     div.innerHTML = `
         <p class="p-4">${txt}</p>
         <button class="ml-auto bg-[#DB1111] w-8 rounded-full h-8 my-auto text-white" id="deleteCard">X</button>
@@ -64,32 +52,24 @@ function newThing(txt){
 }
 
 function checkCard(){
-    const card = document.querySelector("#card")
+    const card = document.querySelectorAll("#card")
     if(card){
-        console.log(card)
-        card.addEventListener("click", (e) => {
-            console.log(e.target)
-            if(e.target.id === 'deleteCard'){
-                console.log('boton borrando')
-            } else {
-                console.log('no')
-            }
-        })
-
-
-        
-        // btnBorrarCard = document.querySelectorAll("#deleteCard")
-        // console.log(btnBorrarCard);
-        // detectCard(card);
-        //deleteCard();
+        card.forEach(card => {
+            card.addEventListener("click", (e) => {
+                if(e.target.id === 'deleteCard'){
+                    deleteCard(card);
+                } else {
+                    console.log('no')
+                }
+            })  
+        });
     } else {
         console.log('no existe')
     }
 }
 
-function deleteCard(btnBorrarCard){
+function deleteCard(card){
     card.remove();
-    btnBorrarCard.parentElement.remove();
 }
 
 function detectCard(card){
@@ -99,11 +79,3 @@ function detectCard(card){
         }
     })
 }
-
-/*
-<!--card-->
-<div class="bg-white flex my-4 rounded-full p-4">
-                <p class="p-4">w</p>
-                <button class="ml-auto bg-[#DB1111] w-8 rounded-full h-8 my-auto text-white">X</button>
-            </div>
-*/
